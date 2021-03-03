@@ -110,7 +110,8 @@ fun TwoColumns(
 @Composable
 fun ThreeColumns(
     text: String, text2: String, text3: String,
-    resourceId: Int, resourceId2: Int, resourceId3: Int, navFunc: () -> Unit
+    resourceId: Int, resourceId2: Int, resourceId3: Int, navFunc: () -> Unit,
+    navFunc2: () -> Unit, navFunc3: () -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -119,8 +120,8 @@ fun ThreeColumns(
             .fillMaxWidth()
     ) {
         CardComposable(text = text, resourceId = resourceId, navFunc = navFunc)
-        CardComposable(text = text2, resourceId = resourceId2, navFunc = navFunc)
-        CardComposable(text = text3, resourceId = resourceId3, navFunc = navFunc)
+        CardComposable(text = text2, resourceId = resourceId2, navFunc = navFunc2)
+        CardComposable(text = text3, resourceId = resourceId3, navFunc = navFunc3)
     }
 }
 
@@ -176,7 +177,9 @@ fun KittenList(navController: NavController) {
                             resourceId = R.drawable.mainecoon1,
                             resourceId2 = R.drawable.mainecoon2,
                             resourceId3 = R.drawable.mainecoon3,
-                            navFunc = { navController.navigate("kitten1Screen") }
+                            navFunc = { navController.navigate("kitten1Screen") },
+                            navFunc2 = { navController.navigate("kitten2Screen") },
+                            navFunc3 = { navController.navigate("kitten3Screen") }
                         )
                         ThreeColumns(
                             text = "Kitten 5",
@@ -185,7 +188,9 @@ fun KittenList(navController: NavController) {
                             resourceId = R.drawable.mainecoon5,
                             resourceId2 = R.drawable.mainecoon6,
                             resourceId3 = R.drawable.mainecoon7,
-                            navFunc = { navController.navigate("kitten5Screen") }
+                            navFunc = { navController.navigate("kitten4Screen") },
+                            navFunc2 = { navController.navigate("kitten5Screen") },
+                            navFunc3 = { navController.navigate("kitten6Screen") }
                         )
                     }
                 }
