@@ -272,12 +272,18 @@ fun Kitten1Screen() {
                 fontSize = 24.sp,
                 color = Color.Gray,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(top = 24.dp)
+                modifier = Modifier.padding(vertical = 24.dp)
             )
-            Row {
-                SmallCards()
-                SmallCards()
-                SmallCards()
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+
+            ) {
+                SmallCards("4 months", "Age")
+                SmallCards("Grey", "Color")
+                SmallCards("11 kg", "Weight")
             }
         }
 
@@ -286,14 +292,30 @@ fun Kitten1Screen() {
 }
 
 @Composable
-fun SmallCards() {
-    Card( modifier = Modifier,
+fun SmallCards(text: String, text2: String) {
+    Card(
+        modifier = Modifier,
         border = BorderStroke(0.5.dp, Color.LightGray),
-        shape = RoundedCornerShape(4.dp),) {
+        shape = RoundedCornerShape(4.dp),
+    ) {
 
-        Column(Modifier.padding(16.dp)) {
-            Text(text = "4 months")
-            Text(text = "4 months")
+        Column(horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = text,
+                textAlign = TextAlign.Center,
+                fontSize = 18.sp,
+                color = Color.Gray,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Text(
+                text = text2,
+                textAlign = TextAlign.Center,
+                fontSize = 12.sp,
+                color = Color.LightGray,
+            )
         }
     }
 }
