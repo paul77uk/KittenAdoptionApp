@@ -91,7 +91,8 @@ fun CardComposable(
 
 @Composable
 fun TwoColumns(
-    text: String, text2: String, resourceId: Int, resourceId2: Int, navFunc: () -> Unit
+    text: String, text2: String, resourceId: Int, resourceId2: Int, navFunc: () -> Unit,
+    navFunc2: () -> Unit
 
 ) {
 
@@ -102,7 +103,7 @@ fun TwoColumns(
             .fillMaxWidth()
     ) {
         CardComposable(text = text, resourceId = resourceId, navFunc = navFunc)
-        CardComposable(text = text2, resourceId = resourceId2, navFunc = navFunc)
+        CardComposable(text = text2, resourceId = resourceId2, navFunc = navFunc2)
     }
 }
 
@@ -146,21 +147,24 @@ fun KittenList(navController: NavController) {
                             text2 = "Kitten 2",
                             resourceId = R.drawable.mainecoon1,
                             resourceId2 = R.drawable.mainecoon2,
-                            navFunc = { navController.navigate("kitten1Screen") }
+                            navFunc = { navController.navigate("kitten1Screen") },
+                            navFunc2 = { navController.navigate("kitten2Screen") }
                         )
                         TwoColumns(
                             text = "Kitten 3",
                             text2 = "Kitten 4",
                             resourceId = R.drawable.mainecoon3,
                             resourceId2 = R.drawable.mainecoon5,
-                            navFunc = { navController.navigate("kitten1Screen") }
+                            navFunc = { navController.navigate("kitten3Screen") },
+                            navFunc2 = { navController.navigate("kitten4Screen") }
                         )
                         TwoColumns(
                             text = "Kitten 5",
                             text2 = "Kitten 6",
                             resourceId = R.drawable.mainecoon6,
                             resourceId2 = R.drawable.mainecoon7,
-                            navFunc = { navController.navigate("kitten1Screen") }
+                            navFunc = { navController.navigate("kitten5Screen") },
+                            navFunc2 = { navController.navigate("kitten6Screen") }
                         )
                     }
                 } else {
@@ -181,7 +185,7 @@ fun KittenList(navController: NavController) {
                             resourceId = R.drawable.mainecoon5,
                             resourceId2 = R.drawable.mainecoon6,
                             resourceId3 = R.drawable.mainecoon7,
-                            navFunc = { navController.navigate("kitten1Screen") }
+                            navFunc = { navController.navigate("kitten5Screen") }
                         )
                     }
                 }
@@ -231,12 +235,17 @@ fun AppNavigator() {
 
         composable("scaffoldAppBar") { ScaffoldAppBar(navController) }
         composable("kitten1Screen") { Kitten1Screen() }
+        composable("kitten2Screen") { Kitten2Screen() }
+        composable("kitten3Screen") { Kitten3Screen() }
+        composable("kitten4Screen") { Kitten4Screen() }
+        composable("kitten5Screen") { Kitten5Screen() }
+        composable("kitten6Screen") { Kitten6Screen() }
 
     }
 }
 
 @Composable
-fun Kitten1Screen() {
+fun KittenScreen(name: String, image: Int) {
     val scrollState = rememberLazyListState()
 
     LazyColumn(
@@ -256,7 +265,7 @@ fun Kitten1Screen() {
             Image(
 
 //                    alignment = Alignment.Center,
-                painter = painterResource(id = R.drawable.mainecoon1),
+                painter = painterResource(id = image),
                 contentDescription = null,
                 modifier = Modifier
 
@@ -268,7 +277,7 @@ fun Kitten1Screen() {
                 contentScale = ContentScale.Crop,
             )
             Text(
-                text = "Kitten 1",
+                text = name,
                 fontSize = 24.sp,
                 color = Color.Gray,
                 fontWeight = FontWeight.Bold,
@@ -289,6 +298,36 @@ fun Kitten1Screen() {
 
     }
 
+}
+
+@Composable
+fun Kitten1Screen() {
+    KittenScreen(name = "Kitten 1", image = R.drawable.mainecoon1)
+}
+
+@Composable
+fun Kitten2Screen() {
+    KittenScreen(name = "Kitten 2", image = R.drawable.mainecoon2)
+}
+
+@Composable
+fun Kitten3Screen() {
+    KittenScreen(name = "Kitten 3", image = R.drawable.mainecoon3)
+}
+
+@Composable
+fun Kitten4Screen() {
+    KittenScreen(name = "Kitten 4", image = R.drawable.mainecoon5)
+}
+
+@Composable
+fun Kitten5Screen() {
+    KittenScreen(name = "Kitten 5", image = R.drawable.mainecoon6)
+}
+
+@Composable
+fun Kitten6Screen() {
+    KittenScreen(name = "Kitten 6", image = R.drawable.mainecoon7)
 }
 
 @Composable
