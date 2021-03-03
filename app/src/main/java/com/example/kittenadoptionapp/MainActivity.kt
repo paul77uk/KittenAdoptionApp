@@ -76,13 +76,13 @@ fun CardComposable(
 //                    .fillMaxSize()
             )
             Spacer(Modifier.height(4.dp))
-            Card(
+
 //                                elevation = 16.dp,
-                border = BorderStroke(0.5.dp, Color.LightGray),
-                shape = RoundedCornerShape(4.dp)
-            ) {
+//                border = BorderStroke(0.5.dp, Color.LightGray),
+//                shape = RoundedCornerShape(4.dp)
+
                 Text(text = text, modifier = Modifier.padding(8.dp))
-            }
+
             Spacer(Modifier.height(4.dp))
 
         }
@@ -268,7 +268,7 @@ fun Kitten1Screen() {
                 contentScale = ContentScale.Crop,
             )
             Text(
-                text = "Caramel",
+                text = "Kitten 1",
                 fontSize = 24.sp,
                 color = Color.Gray,
                 fontWeight = FontWeight.Bold,
